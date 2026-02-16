@@ -1,0 +1,187 @@
+@use 'vuetify/settings' with (
+  $body-font-family: 'Roboto',
+  $border-radius-root: 8px,
+);
+
+// Matsal brand colors
+$matsal-primary: #EA004B;
+$matsal-secondary: #16a34a;
+$matsal-accent: #f59e0b;
+$matsal-bg-warm: #f9f4f0;
+$matsal-dark: #1c1917;
+
+// Global styles
+:root {
+  --matsal-primary: #{$matsal-primary};
+  --matsal-secondary: #{$matsal-secondary};
+  --matsal-accent: #{$matsal-accent};
+  --matsal-bg-warm: #{$matsal-bg-warm};
+  --matsal-dark: #{$matsal-dark};
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+// Gradient backgrounds
+.bg-gradient-primary {
+  background: linear-gradient(135deg, $matsal-primary 0%, #b0003a 100%);
+}
+
+.bg-gradient-warm {
+  background: linear-gradient(180deg, $matsal-bg-warm 0%, #ffffff 100%);
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(135deg, #1c1917 0%, #292524 100%);
+}
+
+// Text gradient
+.text-gradient {
+  background: linear-gradient(135deg, $matsal-primary, #8a002d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Section styling
+.section-padding {
+  padding: 80px 0;
+
+  @media (max-width: 960px) {
+    padding: 48px 0;
+  }
+}
+
+// Animations
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+// Delay utilities
+@for $i from 1 through 10 {
+  .delay-#{$i} {
+    animation-delay: #{$i * 0.1}s;
+    opacity: 0;
+  }
+}
+
+// Card hover effect
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+// Blob decorations
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+// Phone mockup
+.phone-mockup {
+  background: #1c1917;
+  border-radius: 40px;
+  padding: 12px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 28px;
+    background: #1c1917;
+    border-radius: 0 0 16px 16px;
+    z-index: 2;
+  }
+
+  .phone-screen {
+    border-radius: 30px;
+    overflow: hidden;
+    background: white;
+    aspect-ratio: 9 / 19.5;
+    width: 100%;
+  }
+}
