@@ -1,32 +1,27 @@
 <script lang="ts" setup>
 const form = ref({
-  fullName: '',
-  phone: '',
-  email: '',
-  city: '',
-  vehicleType: '',
-  experience: '',
+  fullName: "",
+  phone: "",
+  email: "",
+  city: "",
+  vehicleType: "",
+  experience: "",
   agreed: false,
-})
+});
 
-const vehicleTypes = [
-  'Автомобиль',
-  'Мотоцикл / Скутер',
-  'Велосипед',
-  'Пешком',
-]
+const vehicleTypes = ["Автомобиль", "Мотоцикл / Скутер", "Велосипед", "Пешком"];
 
 const cities = [
-  'Грозный',
-  'Аргун',
-  'Гудермес',
-  'Урус-Мартан',
-  'Шали',
-  'Другой',
-]
+  "Грозный",
+  "Аргун",
+  "Гудермес",
+  "Урус-Мартан",
+  "Шали",
+  "Другой",
+];
 
-const submitted = ref(false)
-const loading = ref(false)
+const submitted = ref(false);
+const loading = ref(false);
 
 const isFormValid = computed(() => {
   return (
@@ -35,54 +30,54 @@ const isFormValid = computed(() => {
     form.value.city &&
     form.value.vehicleType &&
     form.value.agreed
-  )
-})
+  );
+});
 
 async function submitForm() {
-  if (!isFormValid.value) return
-  loading.value = true
-  await new Promise((resolve) => setTimeout(resolve, 1500))
-  loading.value = false
-  submitted.value = true
+  if (!isFormValid.value) return;
+  loading.value = true;
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+  loading.value = false;
+  submitted.value = true;
 }
 
 const benefits = [
   {
-    icon: 'mdi-calendar-clock',
-    title: 'Гибкий график',
-    description: 'Работайте когда хотите — вы сами выбираете часы и дни',
-    color: '#EA004B',
-    bg: '#fef2f2',
+    icon: "mdi-calendar-clock",
+    title: "Гибкий график",
+    description: "Работайте когда хотите — вы сами выбираете часы и дни",
+    color: "#EA004B",
+    bg: "#fef2f2",
   },
   {
-    icon: 'mdi-wallet-outline',
-    title: 'Ежедневные выплаты',
-    description: 'Получайте заработанные деньги каждый день на карту',
-    color: '#16a34a',
-    bg: '#f0fdf4',
+    icon: "mdi-wallet-outline",
+    title: "Ежедневные выплаты",
+    description: "Получайте заработанные деньги каждый день на карту",
+    color: "#16a34a",
+    bg: "#f0fdf4",
   },
   {
-    icon: 'mdi-cellphone-link',
-    title: 'Удобное приложение',
-    description: 'Принимайте заказы, стройте маршруты и отслеживайте заработок',
-    color: '#3b82f6',
-    bg: '#eff6ff',
+    icon: "mdi-cellphone-link",
+    title: "Удобное приложение",
+    description: "Принимайте заказы, стройте маршруты и отслеживайте заработок",
+    color: "#3b82f6",
+    bg: "#eff6ff",
   },
   {
-    icon: 'mdi-shield-star-outline',
-    title: 'Бонусы и поддержка',
-    description: 'Система бонусов за качественную работу и поддержка 24/7',
-    color: '#f59e0b',
-    bg: '#fffbeb',
+    icon: "mdi-shield-star-outline",
+    title: "Бонусы и поддержка",
+    description: "Система бонусов за качественную работу и поддержка 24/7",
+    color: "#f59e0b",
+    bg: "#fffbeb",
   },
-]
+];
 
 const requirements = [
-  'Возраст от 18 лет',
-  'Смартфон на iOS или Android',
-  'Знание города',
-  'Ответственность и пунктуальность',
-]
+  "Возраст от 18 лет",
+  "Смартфон на iOS или Android",
+  "Знание города",
+  "Ответственность и пунктуальность",
+];
 </script>
 
 <template>
@@ -91,9 +86,10 @@ const requirements = [
     <section
       class="position-relative overflow-hidden"
       :style="{
-        background: 'linear-gradient(160deg, #fff5f7 0%, #f9f4f0 40%, #fff 100%)',
-        paddingTop: '40px',
-        paddingBottom: '60px',
+        background:
+          'linear-gradient(160deg, #fff5f7 0%, #f9f4f0 40%, #fff 100%)',
+        paddingTop: '200px',
+        paddingBottom: '150px',
       }"
     >
       <div
@@ -109,7 +105,10 @@ const requirements = [
       />
 
       <v-container>
-        <div class="text-center" :style="{ maxWidth: '680px', margin: '0 auto' }">
+        <div
+          class="text-center"
+          :style="{ maxWidth: '680px', margin: '0 auto' }"
+        >
           <v-chip
             color="primary"
             variant="tonal"
@@ -140,8 +139,8 @@ const requirements = [
               lineHeight: '1.7',
             }"
           >
-            Гибкий график, стабильный доход и удобное приложение.
-            Начните зарабатывать уже сегодня!
+            Гибкий график, стабильный доход и удобное приложение. Начните
+            зарабатывать уже сегодня!
           </p>
         </div>
       </v-container>
@@ -186,7 +185,10 @@ const requirements = [
               >
                 {{ benefit.title }}
               </h4>
-              <p class="text-body-2" :style="{ color: '#78716c', lineHeight: '1.6' }">
+              <p
+                class="text-body-2"
+                :style="{ color: '#78716c', lineHeight: '1.6' }"
+              >
                 {{ benefit.description }}
               </p>
             </v-card>
@@ -196,10 +198,7 @@ const requirements = [
     </section>
 
     <!-- Form section -->
-    <section
-      class="section-padding"
-      :style="{ backgroundColor: '#f9f4f0' }"
-    >
+    <section class="section-padding" :style="{ backgroundColor: '#f9f4f0' }">
       <v-container>
         <v-row justify="center">
           <v-col cols="12" md="8" lg="6">
@@ -226,12 +225,22 @@ const requirements = [
               >
                 <v-icon icon="mdi-check-circle" color="success" size="48" />
               </div>
-              <h2 class="text-h5 font-weight-bold mb-3" :style="{ color: '#1c1917' }">
+              <h2
+                class="text-h5 font-weight-bold mb-3"
+                :style="{ color: '#1c1917' }"
+              >
                 Заявка отправлена!
               </h2>
-              <p class="text-body-1" :style="{ color: '#78716c', maxWidth: '400px', margin: '0 auto' }">
-                Спасибо за интерес к работе в Matsal! Мы свяжемся с вами в ближайшее время
-                для уточнения деталей и начала сотрудничества.
+              <p
+                class="text-body-1"
+                :style="{
+                  color: '#78716c',
+                  maxWidth: '400px',
+                  margin: '0 auto',
+                }"
+              >
+                Спасибо за интерес к работе в Matsal! Мы свяжемся с вами в
+                ближайшее время для уточнения деталей и начала сотрудничества.
               </p>
               <v-btn
                 color="primary"
@@ -323,7 +332,10 @@ const requirements = [
                       padding: '20px',
                     }"
                   >
-                    <h4 class="text-subtitle-2 font-weight-bold mb-3" :style="{ color: '#1c1917' }">
+                    <h4
+                      class="text-subtitle-2 font-weight-bold mb-3"
+                      :style="{ color: '#1c1917' }"
+                    >
                       Требования:
                     </h4>
                     <div class="d-flex flex-column ga-2">
@@ -332,8 +344,16 @@ const requirements = [
                         :key="req"
                         class="d-flex align-center ga-2"
                       >
-                        <v-icon icon="mdi-check-circle" color="success" size="18" />
-                        <span class="text-body-2" :style="{ color: '#57534e' }">{{ req }}</span>
+                        <v-icon
+                          icon="mdi-check-circle"
+                          color="success"
+                          size="18"
+                        />
+                        <span
+                          class="text-body-2"
+                          :style="{ color: '#57534e' }"
+                          >{{ req }}</span
+                        >
                       </div>
                     </div>
                   </div>
@@ -346,7 +366,10 @@ const requirements = [
                     <template #label>
                       <span class="text-body-2" :style="{ color: '#78716c' }">
                         Я согласен с
-                        <a href="#" class="text-primary text-decoration-none font-weight-medium">
+                        <a
+                          href="#"
+                          class="text-primary text-decoration-none font-weight-medium"
+                        >
                           условиями обработки данных
                         </a>
                       </span>

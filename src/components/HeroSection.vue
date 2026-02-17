@@ -7,9 +7,10 @@
     class="position-relative overflow-hidden"
     :style="{
       background: 'linear-gradient(160deg, #fff5f7 0%, #f9f4f0 40%, #fff 100%)',
-      minHeight: '90vh',
+      minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',
+      paddingTop: '0',
     }"
   >
     <!-- Decorative blobs -->
@@ -18,7 +19,7 @@
       :style="{
         width: '500px',
         height: '500px',
-        background: '#EA004B',
+        background: '#D1003F',
         top: '-100px',
         right: '-100px',
         opacity: '0.08',
@@ -29,7 +30,7 @@
       :style="{
         width: '400px',
         height: '400px',
-        background: '#16a34a',
+        background: '#15803d',
         bottom: '-50px',
         left: '-100px',
         opacity: '0.06',

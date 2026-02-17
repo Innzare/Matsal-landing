@@ -1,28 +1,28 @@
 <script lang="ts" setup>
 const form = ref({
-  businessName: '',
-  businessType: '',
-  contactName: '',
-  phone: '',
-  email: '',
-  address: '',
-  description: '',
+  businessName: "",
+  businessType: "",
+  contactName: "",
+  phone: "",
+  email: "",
+  address: "",
+  description: "",
   agreed: false,
-})
+});
 
 const businessTypes = [
-  'Ресторан',
-  'Кафе',
-  'Фастфуд',
-  'Кофейня',
-  'Супермаркет',
-  'Продуктовый магазин',
-  'Пекарня',
-  'Другое',
-]
+  "Ресторан",
+  "Кафе",
+  "Фастфуд",
+  "Кофейня",
+  "Супермаркет",
+  "Продуктовый магазин",
+  "Пекарня",
+  "Другое",
+];
 
-const submitted = ref(false)
-const loading = ref(false)
+const submitted = ref(false);
+const loading = ref(false);
 
 const isFormValid = computed(() => {
   return (
@@ -32,42 +32,44 @@ const isFormValid = computed(() => {
     form.value.phone &&
     form.value.email &&
     form.value.agreed
-  )
-})
+  );
+});
 
 async function submitForm() {
-  if (!isFormValid.value) return
-  loading.value = true
+  if (!isFormValid.value) return;
+  loading.value = true;
 
   // Simulate API call
-  await new Promise((resolve) => setTimeout(resolve, 1500))
+  await new Promise((resolve) => setTimeout(resolve, 1500));
 
-  loading.value = false
-  submitted.value = true
+  loading.value = false;
+  submitted.value = true;
 }
 
 const advantages = [
   {
-    icon: 'mdi-trending-up',
-    title: 'Рост продаж до 40%',
-    description: 'Наши партнёры увеличивают оборот благодаря потоку онлайн-заказов',
+    icon: "mdi-trending-up",
+    title: "Рост продаж до 40%",
+    description:
+      "Наши партнёры увеличивают оборот благодаря потоку онлайн-заказов",
   },
   {
-    icon: 'mdi-cash-register',
-    title: 'Без начальных вложений',
-    description: 'Подключение бесплатно — комиссия только с успешных заказов',
+    icon: "mdi-cash-register",
+    title: "Без начальных вложений",
+    description: "Подключение бесплатно — комиссия только с успешных заказов",
   },
   {
-    icon: 'mdi-tablet-dashboard',
-    title: 'Партнёрское приложение',
-    description: 'Управляйте заказами, меню и статистикой через удобное мобильное приложение',
+    icon: "mdi-tablet-dashboard",
+    title: "Партнёрское приложение",
+    description:
+      "Управляйте заказами, меню и статистикой через удобное мобильное приложение",
   },
   {
-    icon: 'mdi-truck-fast-outline',
-    title: 'Своя служба доставки',
-    description: 'Мы берём на себя всю логистику — вам не нужны свои курьеры',
+    icon: "mdi-truck-fast-outline",
+    title: "Своя служба доставки",
+    description: "Мы берём на себя всю логистику — вам не нужны свои курьеры",
   },
-]
+];
 </script>
 
 <template>
@@ -76,9 +78,10 @@ const advantages = [
     <section
       class="position-relative overflow-hidden"
       :style="{
-        background: 'linear-gradient(160deg, #fff5f7 0%, #f9f4f0 40%, #fff 100%)',
-        paddingTop: '40px',
-        paddingBottom: '60px',
+        background:
+          'linear-gradient(160deg, #fff5f7 0%, #f9f4f0 40%, #fff 100%)',
+        paddingTop: '200px',
+        paddingBottom: '150px',
       }"
     >
       <div
@@ -94,7 +97,10 @@ const advantages = [
       />
 
       <v-container>
-        <div class="text-center" :style="{ maxWidth: '680px', margin: '0 auto' }">
+        <div
+          class="text-center"
+          :style="{ maxWidth: '680px', margin: '0 auto' }"
+        >
           <v-chip
             color="primary"
             variant="tonal"
@@ -125,8 +131,8 @@ const advantages = [
               lineHeight: '1.7',
             }"
           >
-            Получайте заказы от тысяч пользователей, увеличивайте выручку
-            и управляйте бизнесом из одного приложения
+            Получайте заказы от тысяч пользователей, увеличивайте выручку и
+            управляйте бизнесом из одного приложения
           </p>
         </div>
       </v-container>
@@ -171,7 +177,10 @@ const advantages = [
               >
                 {{ adv.title }}
               </h4>
-              <p class="text-body-2" :style="{ color: '#78716c', lineHeight: '1.6' }">
+              <p
+                class="text-body-2"
+                :style="{ color: '#78716c', lineHeight: '1.6' }"
+              >
                 {{ adv.description }}
               </p>
             </v-card>
@@ -181,10 +190,7 @@ const advantages = [
     </section>
 
     <!-- Form section -->
-    <section
-      class="section-padding"
-      :style="{ backgroundColor: '#f9f4f0' }"
-    >
+    <section class="section-padding" :style="{ backgroundColor: '#f9f4f0' }">
       <v-container>
         <v-row justify="center">
           <v-col cols="12" md="8" lg="6">
@@ -211,11 +217,22 @@ const advantages = [
               >
                 <v-icon icon="mdi-check-circle" color="success" size="48" />
               </div>
-              <h2 class="text-h5 font-weight-bold mb-3" :style="{ color: '#1c1917' }">
+              <h2
+                class="text-h5 font-weight-bold mb-3"
+                :style="{ color: '#1c1917' }"
+              >
                 Заявка отправлена!
               </h2>
-              <p class="text-body-1" :style="{ color: '#78716c', maxWidth: '400px', margin: '0 auto' }">
-                Спасибо за интерес к Matsal! Наш менеджер свяжется с вами в ближайшее время для обсуждения деталей.
+              <p
+                class="text-body-1"
+                :style="{
+                  color: '#78716c',
+                  maxWidth: '400px',
+                  margin: '0 auto',
+                }"
+              >
+                Спасибо за интерес к Matsal! Наш менеджер свяжется с вами в
+                ближайшее время для обсуждения деталей.
               </p>
               <v-btn
                 color="primary"
@@ -314,7 +331,10 @@ const advantages = [
                     <template #label>
                       <span class="text-body-2" :style="{ color: '#78716c' }">
                         Я согласен с
-                        <a href="#" class="text-primary text-decoration-none font-weight-medium">
+                        <a
+                          href="#"
+                          class="text-primary text-decoration-none font-weight-medium"
+                        >
                           условиями обработки данных
                         </a>
                       </span>
