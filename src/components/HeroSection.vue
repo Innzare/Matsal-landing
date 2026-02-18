@@ -167,101 +167,12 @@
 
             <!-- Phone -->
             <div class="phone-mockup" :style="{ width: '280px' }">
-              <div
-                class="phone-screen d-flex flex-column"
-                :style="{ background: '#f9f4f0' }"
-              >
-                <!-- Mock app screen -->
-                <div :style="{ padding: '40px 16px 16px' }">
-                  <div class="d-flex align-center justify-space-between mb-4">
-                    <div>
-                      <div class="text-caption" :style="{ color: '#a8a29e' }">Доставка по адресу</div>
-                      <div class="text-body-2 font-weight-bold">Магаданская 14</div>
-                    </div>
-                    <v-avatar size="32" color="primary">
-                      <v-icon size="16" color="white">mdi-account</v-icon>
-                    </v-avatar>
-                  </div>
-
-                  <!-- Search -->
-                  <div
-                    :style="{
-                      background: 'white',
-                      borderRadius: '12px',
-                      padding: '10px 14px',
-                      marginBottom: '16px',
-                      border: '1px solid #e7e5e4',
-                    }"
-                  >
-                    <div class="d-flex align-center ga-2">
-                      <v-icon size="18" color="#a8a29e">mdi-magnify</v-icon>
-                      <span class="text-body-2" :style="{ color: '#a8a29e' }">Найти ресторан или блюдо</span>
-                    </div>
-                  </div>
-
-                  <!-- Categories -->
-                  <div class="d-flex ga-2 mb-4" :style="{ overflow: 'hidden' }">
-                    <div
-                      v-for="cat in ['🍕 Пицца', '🍔 Бургеры', '🌯 Шаурма']"
-                      :key="cat"
-                      :style="{
-                        background: 'white',
-                        borderRadius: '10px',
-                        padding: '8px 10px',
-                        fontSize: '11px',
-                        fontWeight: '500',
-                        whiteSpace: 'nowrap',
-                        border: '1px solid #e7e5e4',
-                      }"
-                    >
-                      {{ cat }}
-                    </div>
-                  </div>
-
-                  <!-- Restaurant cards -->
-                  <div
-                    v-for="(r, i) in [
-                      { name: 'Tbiliso', rating: '4.8', time: '25-35 мин', emoji: '🍲' },
-                      { name: 'Burger King', rating: '4.5', time: '20-30 мин', emoji: '🍔' },
-                    ]"
-                    :key="i"
-                    :style="{
-                      background: 'white',
-                      borderRadius: '14px',
-                      padding: '12px',
-                      marginBottom: '8px',
-                      border: '1px solid #e7e5e4',
-                    }"
-                  >
-                    <div class="d-flex ga-3">
-                      <div
-                        :style="{
-                          width: '56px',
-                          height: '56px',
-                          borderRadius: '12px',
-                          background: i === 0 ? '#fef2f2' : '#fff7ed',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontSize: '24px',
-                          flexShrink: '0',
-                        }"
-                      >
-                        {{ r.emoji }}
-                      </div>
-                      <div>
-                        <div class="text-body-2 font-weight-bold">{{ r.name }}</div>
-                        <div class="d-flex align-center ga-2 mt-1">
-                          <div class="d-flex align-center ga-1">
-                            <v-icon size="12" color="amber">mdi-star</v-icon>
-                            <span class="text-caption font-weight-medium">{{ r.rating }}</span>
-                          </div>
-                          <span class="text-caption" :style="{ color: '#a8a29e' }">{{ r.time }}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="phone-screen">
+                <img
+                  src="@/assets/images/simulator_screenshot_5416FE7A-3962-427D-BFBE-52990B4F035A.png"
+                  alt="Matsal App"
+                  :style="{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }"
+                />
               </div>
             </div>
           </div>
