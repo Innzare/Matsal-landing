@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import type { CreatePartnerApplicationDto, CreateGroceryStoreApplicationDto } from "@/services/api";
+import { applicationsApi, handleApiError } from "@/services/api";
+
 const form = ref({
   businessName: "",
   businessType: "",
@@ -23,6 +26,7 @@ const businessTypes = [
 
 const submitted = ref(false);
 const loading = ref(false);
+const errorMessage = ref("");
 
 const isFormValid = computed(() => {
   return (
@@ -35,15 +39,45 @@ const isFormValid = computed(() => {
   );
 });
 
+const groceryTypes = ["Супермаркет", "Продуктовый магазин"];
+
+const isGrocery = computed(() => groceryTypes.includes(form.value.businessType));
+
 async function submitForm() {
   if (!isFormValid.value) return;
   loading.value = true;
+  errorMessage.value = "";
 
-  // Simulate API call
-  await new Promise((resolve) => setTimeout(resolve, 1500));
-
-  loading.value = false;
-  submitted.value = true;
+  try {
+    if (isGrocery.value) {
+      const data: CreateGroceryStoreApplicationDto = {
+        storeName: form.value.businessName,
+        contactName: form.value.contactName,
+        contactPhone: form.value.phone,
+        contactEmail: form.value.email,
+        storeAddress: form.value.address || undefined,
+        description: form.value.description || undefined,
+      };
+      await applicationsApi.submitGroceryStoreApplication(data);
+    } else {
+      const data: CreatePartnerApplicationDto = {
+        restaurantName: form.value.businessName,
+        contactName: form.value.contactName,
+        contactPhone: form.value.phone,
+        contactEmail: form.value.email,
+        restaurantAddress: form.value.address || undefined,
+        description: form.value.description || undefined,
+      };
+      await applicationsApi.submitPartnerApplication(data);
+    }
+    submitted.value = true;
+  } catch (error) {
+    const err = handleApiError(error);
+    errorMessage.value = err.message;
+    console.error("Error submitting form:", err);
+  } finally {
+    loading.value = false;
+  }
 }
 
 const advantages = [
@@ -261,6 +295,17 @@ const advantages = [
               <p class="text-body-2 mb-8" :style="{ color: '#78716c' }">
                 Заполните форму и мы свяжемся с вами для обсуждения деталей
               </p>
+
+              <!-- Error message -->
+              <v-alert
+                v-if="errorMessage"
+                type="error"
+                class="mb-6"
+                closable
+                @click:close="errorMessage = ''"
+              >
+                {{ errorMessage }}
+              </v-alert>
 
               <v-form @submit.prevent="submitForm">
                 <div class="d-flex flex-column ga-4">

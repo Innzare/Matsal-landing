@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { applicationsApi } from "@/services/api";
+
 const form = ref({
   fullName: "",
   phone: "",
@@ -27,18 +29,34 @@ const isFormValid = computed(() => {
   return (
     form.value.fullName &&
     form.value.phone &&
+    form.value.email &&
     form.value.city &&
     form.value.vehicleType &&
     form.value.agreed
   );
 });
 
+const submitError = ref("");
+
 async function submitForm() {
   if (!isFormValid.value) return;
   loading.value = true;
-  await new Promise((resolve) => setTimeout(resolve, 1500));
-  loading.value = false;
-  submitted.value = true;
+  submitError.value = "";
+  try {
+    await applicationsApi.submitCourierApplication({
+      fullName: form.value.fullName,
+      phone: form.value.phone,
+      email: form.value.email,
+      city: form.value.city,
+      vehicleType: form.value.vehicleType,
+      experience: form.value.experience || undefined,
+    });
+    submitted.value = true;
+  } catch (error: any) {
+    submitError.value = error.message || "Ошибка при отправке заявки";
+  } finally {
+    loading.value = false;
+  }
 }
 
 const benefits = [
@@ -291,7 +309,8 @@ const requirements = [
 
                   <v-text-field
                     v-model="form.email"
-                    label="Email (необязательно)"
+                    label="Email"
+                    :rules="[(v: string) => !!v || 'Укажите email', (v: string) => /.+@.+\..+/.test(v) || 'Некорректный email']"
                     placeholder="email@example.com"
                     prepend-inner-icon="mdi-email-outline"
                     type="email"
@@ -375,6 +394,16 @@ const requirements = [
                       </span>
                     </template>
                   </v-checkbox>
+
+                  <v-alert
+                    v-if="submitError"
+                    type="error"
+                    variant="tonal"
+                    density="compact"
+                    class="mb-2"
+                  >
+                    {{ submitError }}
+                  </v-alert>
 
                   <v-btn
                     type="submit"
