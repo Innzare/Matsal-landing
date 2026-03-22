@@ -99,12 +99,12 @@ const contacts = [
           &copy; {{ year }} Matsal. Все права защищены.
         </p>
         <div class="d-flex ga-4">
-          <a href="#" class="text-body-2 text-decoration-none" :style="{ color: '#78716c' }">
+          <router-link to="/privacy" class="text-body-2 text-decoration-none" :style="{ color: '#78716c' }">
             Политика конфиденциальности
-          </a>
-          <a href="#" class="text-body-2 text-decoration-none" :style="{ color: '#78716c' }">
+          </router-link>
+          <router-link to="/terms" class="text-body-2 text-decoration-none" :style="{ color: '#78716c' }">
             Условия использования
-          </a>
+          </router-link>
         </div>
       </div>
     </v-container>
