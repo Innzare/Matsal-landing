@@ -4,6 +4,7 @@ const year = new Date().getFullYear()
 const links = [
   { title: 'Для ресторанов', to: '/partner' },
   { title: 'Для курьеров', to: '/courier' },
+  { title: 'Поддержка', to: '/support' },
 ]
 
 const contacts = [

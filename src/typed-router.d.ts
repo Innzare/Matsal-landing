@@ -22,6 +22,7 @@ declare module 'vue-router/auto-routes' {
     '/courier': RouteRecordInfo<'/courier', '/courier', Record<never, never>, Record<never, never>>,
     '/partner': RouteRecordInfo<'/partner', '/partner', Record<never, never>, Record<never, never>>,
     '/privacy': RouteRecordInfo<'/privacy', '/privacy', Record<never, never>, Record<never, never>>,
+    '/support': RouteRecordInfo<'/support', '/support', Record<never, never>, Record<never, never>>,
   }
 
   /**
@@ -49,6 +50,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/privacy.vue': {
       routes: '/privacy'
+      views: never
+    }
+    'src/pages/support.vue': {
+      routes: '/support'
       views: never
     }
   }
